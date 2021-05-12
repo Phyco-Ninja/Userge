@@ -153,7 +153,7 @@ async def get_chat_admin(chat_id: int, user_id: int):
 
 
 # Actively update admin cache on every new chat member update
-@userge.on_chat_member_updated(group=-4)
+@userge.on_chat_member_updated(group=-3)
 async def _chat_admin_updater(_client: userge, update: ChatMemberUpdated):
     userge.getLogger("CMU").info("Chat Member Update Received")
     _old = update.old_chat_member
@@ -177,7 +177,6 @@ async def _chat_admin_updater(_client: userge, update: ChatMemberUpdated):
         else:
             CHAT_ADMINS[chat_id].remove(admin)
             CHAT_ADMINS[chat_id].append(new)
-    update.continue_propagation()
 
 
 @userge.on_cmd("blerts", about={
