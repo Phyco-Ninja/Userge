@@ -275,7 +275,7 @@ async def go_away_blacklist(message: Message):
 STUPIX: dict = {}
 
 
-@userge.on_filters(Blacklister.chats & ~filters.me)
+@userge.on_filters(Blacklister.chats & ~filters.me, group=5)
 async def handle_update_black(message: Message):
     if message.sender_chat:
         return
